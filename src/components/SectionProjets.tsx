@@ -1,10 +1,10 @@
 import { projets, type Projet } from "../data/portfolio";
 import Reveal from "./Reveal";
 
-function CarteProjet({ p, grande = false }: { p: Projet; grande?: boolean }) {
+function CarteProjet({ p }: { p: Projet }) {
     return (
-        <Reveal className={grande ? "lg:col-span-12" : ""}>
-            <article className={`bg-encre/70 border border-white/10 rounded-3xl p-7 md:p-10 hover:border-accent/40 transition-colors duration-300 ${grande ? "" : ""}`}>
+        <Reveal>
+            <article className="bg-encre/70 border border-white/10 rounded-3xl p-7 md:p-10 hover:border-accent/40 transition-colors duration-300">
                 <div className="flex flex-wrap items-center gap-3 mb-5">
                     <span className="font-display font-bold text-4xl text-white/10 select-none">{p.numero}</span>
                     <span className="text-xs font-semibold uppercase tracking-wider text-neon bg-neon/10 border border-neon/20 px-3 py-1.5 rounded-full">
@@ -17,7 +17,7 @@ function CarteProjet({ p, grande = false }: { p: Projet; grande?: boolean }) {
                     )}
                 </div>
 
-                <h3 className={`font-display font-bold text-white leading-snug ${grande ? "text-2xl sm:text-3xl" : "text-xl"}`}>
+                <h3 className="font-display font-bold text-white text-xl sm:text-2xl leading-snug">
                     {p.titre}
                 </h3>
 
@@ -46,13 +46,14 @@ function CarteProjet({ p, grande = false }: { p: Projet; grande?: boolean }) {
                             <span key={t} className="text-xs font-medium text-white/70 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{t}</span>
                         ))}
                     </div>
-                    <a href={p.lien} target="_blank" rel="noreferrer"
-                        className="bg-gradient-to-r from-accent to-neon text-nuit font-bold px-6 py-3 rounded-full text-sm hover:opacity-90 transition whitespace-nowrap">
-                        {p.lienLabel} →
-                    </a>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                        <span className="text-xs text-slate-500">{p.resultat}</span>
+                        <a href={p.lien} target="_blank" rel="noreferrer"
+                            className="bg-gradient-to-r from-accent to-neon text-nuit font-bold px-6 py-3 rounded-full text-sm hover:opacity-90 transition whitespace-nowrap">
+                            {p.lienLabel} →
+                        </a>
+                    </div>
                 </div>
-
-                <p className="text-xs text-slate-500 mt-4">{p.resultat}</p>
             </article>
         </Reveal>
     );
@@ -70,7 +71,7 @@ export default function SectionProjets() {
                     </h2>
                 </Reveal>
 
-                <div className="grid lg:grid-cols-12 gap-6">
+                <div className="grid gap-6">
                     {projets.map((p) => (
                         <CarteProjet key={p.numero} p={p} />
                     ))}
