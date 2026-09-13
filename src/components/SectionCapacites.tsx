@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 
 export default function SectionCapacites() {
     return (
-        <section id="capacites" className="py-24 relative overflow-hidden">
+        <section id="capacites" className="py-24 bg-encre relative overflow-hidden">
             <div className="halo w-[400px] h-[400px] bg-accent/10 top-20 -left-32" />
             <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
                 <Reveal className="mb-14">

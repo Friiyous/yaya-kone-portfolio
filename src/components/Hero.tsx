@@ -4,8 +4,7 @@ import Reveal from "./Reveal";
 
 export default function Hero() {
     return (
-        <section id="top" className="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden">
-            {/* Halos discrets */}
+        <section id="top" className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
             <div className="halo w-[500px] h-[500px] bg-accent/15 -top-32 -right-32" />
             <div className="halo w-[400px] h-[400px] bg-neon/10 bottom-0 -left-24" />
 
@@ -28,6 +27,10 @@ export default function Hero() {
                         {hero.sousTitre}
                     </p>
 
+                    <p className="mt-4 text-xs sm:text-sm text-slate-500/90 flex items-center gap-2">
+                        <span aria-hidden="true">🩺</span> {hero.contexte}
+                    </p>
+
                     <div className="flex flex-wrap items-center gap-4 mt-9">
                         <a href="#projets"
                             className="bg-gradient-to-r from-accent to-neon text-nuit font-bold px-8 py-4 rounded-full text-base shadow-carte hover:opacity-90 hover:-translate-y-0.5 transition-all">
@@ -40,35 +43,31 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Flux de transformation : Problème → Idée → Technologie → Solution */}
-                <Reveal delay={0.3} className="mt-16">
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4" aria-label="De la problématique à la solution">
+                {/* Diagramme : Problème → Idée → Technologie → Solution (avec le sens de chaque étape) */}
+                <Reveal delay={0.3} className="mt-14">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4" aria-label="De la problématique à la solution">
                         {hero.flux.map((etape, i) => (
-                            <div key={etape} className="flex items-center gap-3 sm:gap-4">
-                                <motion.span
-                                    initial={{ opacity: 0, x: -12 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.6 + i * 0.25, duration: 0.5 }}
-                                    className={`font-display font-semibold px-5 py-2.5 rounded-2xl border text-sm sm:text-base ${
-                                        i === hero.flux.length - 1
-                                            ? "bg-gradient-to-r from-accent to-neon text-nuit border-transparent shadow-carte"
-                                            : "bg-white/5 text-white/85 border-white/15"
-                                    }`}
-                                >
-                                    {etape}
-                                </motion.span>
-                                {i < hero.flux.length - 1 && (
-                                    <motion.span
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ delay: 0.75 + i * 0.25 }}
-                                        className="text-neon text-xl"
-                                        aria-hidden="true"
-                                    >
-                                        →
-                                    </motion.span>
-                                )}
-                            </div>
+                            <motion.div
+                                key={etape.titre}
+                                initial={{ opacity: 0, y: 16 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6 + i * 0.2, duration: 0.5 }}
+                                className={`rounded-2xl p-4 text-left border ${
+                                    i === hero.flux.length - 1
+                                        ? "bg-gradient-to-br from-accent to-neon border-transparent shadow-carte"
+                                        : "bg-encre/60 border-white/10"
+                                }`}
+                            >
+                                <p className={`text-[11px] uppercase tracking-wider ${i === hero.flux.length - 1 ? "text-nuit/80" : "text-slate-500"}`}>
+                                    Étape {i + 1} {i < hero.flux.length - 1 && <span aria-hidden="true">→</span>}
+                                </p>
+                                <p className={`font-display font-semibold text-sm sm:text-base ${i === hero.flux.length - 1 ? "text-nuit" : "text-white"}`}>
+                                    {etape.titre}
+                                </p>
+                                <p className={`text-[11px] mt-1 leading-snug ${i === hero.flux.length - 1 ? "text-nuit/70" : "text-slate-400"}`}>
+                                    {etape.detail}
+                                </p>
+                            </motion.div>
                         ))}
                     </div>
                 </Reveal>

@@ -31,36 +31,44 @@ export default function SectionVideoFactory() {
 
                         <p className="text-slate-300/90 mt-6 max-w-3xl leading-relaxed relative z-10">{videoFactory.description}</p>
 
-                        {/* Concepts clés */}
-                        <div className="flex flex-wrap gap-2 mt-8 relative z-10">
-                            {videoFactory.concepts.map((c) => (
-                                <span key={c} className="text-xs font-medium text-white/75 bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-full">
-                                    {c}
-                                </span>
+                        {/* Trois familles claires au lieu de 12 chips */}
+                        <div className="grid md:grid-cols-3 gap-4 mt-8 relative z-10">
+                            {videoFactory.familles.map((famille) => (
+                                <div key={famille.titre} className="bg-white/5 border border-white/10 rounded-2xl p-4">
+                                    <p className="text-sm font-bold text-white flex items-center gap-2">
+                                        <span aria-hidden="true">{famille.icone}</span> {famille.titre}
+                                    </p>
+                                    <div className="flex flex-wrap gap-1.5 mt-2.5">
+                                        {famille.termes.map((t) => (
+                                            <span key={t} className="text-[11px] font-medium text-white/75 bg-encre/70 border border-white/10 px-2.5 py-1 rounded-full">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
                             ))}
                         </div>
 
-                        {/* PIPELINE VISUEL : Brief → ... → Vidéo finale */}
+                        {/* PIPELINE : grille propre, stable sur mobile */}
                         <Reveal delay={0.15} className="mt-10 relative z-10">
                             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-4">La chaîne de production</p>
-                            <div className="flex flex-wrap items-center gap-y-4 gap-x-2 sm:gap-x-3">
+                            <ol className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
                                 {videoFactory.pipeline.map((etape, i) => (
-                                    <div key={etape} className="flex items-center gap-2 sm:gap-3">
-                                        <span
-                                            className={`font-display font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl border ${
-                                                i === 0
-                                                    ? "bg-white/10 text-white border-white/20"
-                                                    : i === videoFactory.pipeline.length - 1
-                                                        ? "bg-gradient-to-r from-accent to-neon text-nuit border-transparent shadow-carte"
-                                                        : "bg-encre text-white/85 border-white/15"
-                                            }`}
-                                        >
+                                    <li
+                                        key={etape}
+                                        className={`flex flex-col justify-center rounded-xl border px-3 py-3 text-center ${
+                                            i === videoFactory.pipeline.length - 1
+                                                ? "bg-gradient-to-br from-accent to-neon border-transparent shadow-carte"
+                                                : "bg-encre/80 border-white/15"
+                                        }`}
+                                    >
+                                        <span className={`text-[10px] uppercase tracking-wider ${i === videoFactory.pipeline.length - 1 ? "text-nuit/70" : "text-slate-500"}`}>
+                                            Étape {i + 1}
+                                        </span>
+                                        <span className={`font-display font-semibold text-xs sm:text-sm ${i === videoFactory.pipeline.length - 1 ? "text-nuit" : "text-white"}`}>
                                             {etape}
                                         </span>
-                                        {i < videoFactory.pipeline.length - 1 && <span className="pipeline-ligne w-4 sm:w-8 h-px" aria-hidden="true" />}
-                                    </div>
+                                    </li>
                                 ))}
-                            </div>
+                            </ol>
                         </Reveal>
 
                         <div className="mt-10 relative z-10">

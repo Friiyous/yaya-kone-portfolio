@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 
 export default function SectionPourVous() {
     return (
-        <section id="pour-vous" className="py-24 relative overflow-hidden">
+        <section id="pour-vous" className="py-24 bg-encre relative overflow-hidden">
             <div className="max-w-6xl mx-auto px-4 md:px-8 relative z-10">
                 <Reveal className="mb-14">
                     <span className="text-neon font-semibold text-xs uppercase tracking-[0.2em]">Ce que je peux construire pour vous</span>

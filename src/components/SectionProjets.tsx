@@ -4,52 +4,65 @@ import Reveal from "./Reveal";
 function CarteProjet({ p }: { p: Projet }) {
     return (
         <Reveal>
-            <article className="bg-encre/70 border border-white/10 rounded-3xl p-7 md:p-10 hover:border-accent/40 transition-colors duration-300">
-                <div className="flex flex-wrap items-center gap-3 mb-5">
-                    <span className="font-display font-bold text-4xl text-white/10 select-none">{p.numero}</span>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-neon bg-neon/10 border border-neon/20 px-3 py-1.5 rounded-full">
+            <article className="bg-encre/70 border border-white/10 rounded-3xl overflow-hidden hover:border-accent/40 transition-colors duration-300">
+                {/* Visuel réel du site déployé */}
+                <div className="relative aspect-[16/9] overflow-hidden">
+                    <img
+                        src={p.visuel}
+                        alt={`Aperçu du site ${p.titre}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                    />
+                    <span className="absolute top-3 left-3 text-xs font-semibold uppercase tracking-wider text-neon bg-nuit/85 border border-neon/20 px-3 py-1.5 rounded-full">
                         {p.categorie}
                     </span>
                     {p.statut && (
-                        <span className="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
+                        <span className="absolute top-3 right-3 text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full">
                             ● {p.statut}
                         </span>
                     )}
                 </div>
 
-                <h3 className="font-display font-bold text-white text-xl sm:text-2xl leading-snug">
-                    {p.titre}
-                </h3>
+                <div className="p-7 md:p-10">
+                    <h3 className="font-display font-bold text-white text-xl sm:text-2xl leading-snug">{p.titre}</h3>
 
-                <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">Le problème</p>
-                        <p className="text-slate-300/90 text-sm leading-relaxed">{p.probleme}</p>
+                    <div className="grid md:grid-cols-3 gap-5 mt-8">
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">01 · Contexte</p>
+                            <p className="text-slate-300/90 text-sm mt-2 leading-relaxed">{p.probleme}</p>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">02 · Solution</p>
+                            <p className="text-slate-300/90 text-sm mt-2 leading-relaxed">{p.solution}</p>
+                        </div>
+                        <div className="bg-white/5 border border-white/10 rounded-2xl p-5">
+                            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">03 · Résultat</p>
+                            <p className="text-slate-300/90 text-sm mt-2 leading-relaxed">{p.resultat}</p>
+                        </div>
                     </div>
-                    <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">La solution construite</p>
-                        <p className="text-slate-300/90 text-sm leading-relaxed">{p.solution}</p>
-                    </div>
-                </div>
 
-                <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2 mt-6">
-                    {p.points.map((point) => (
-                        <li key={point} className="flex items-start gap-2 text-sm text-slate-300/90">
-                            <span className="text-neon mt-0.5" aria-hidden="true">✓</span> {point}
-                        </li>
-                    ))}
-                </ul>
+                    <details className="mt-6 group">
+                        <summary className="cursor-pointer text-sm text-slate-400 hover:text-white transition select-none">
+                            <span className="mr-1.5" aria-hidden="true">▸</span> Ce qui a été livré en détail
+                        </summary>
+                        <ul className="mt-3 grid sm:grid-cols-2 gap-x-5 gap-y-2">
+                            {p.points.map((point) => (
+                                <li key={point} className="flex items-start gap-2 text-sm text-slate-300/90">
+                                    <span className="text-neon mt-0.5" aria-hidden="true">✓</span> {point}
+                                </li>
+                            ))}
+                        </ul>
+                    </details>
 
-                <div className="flex flex-wrap items-center justify-between gap-4 mt-7 pt-6 border-t border-white/10">
-                    <div className="flex flex-wrap gap-2">
-                        {p.technologies.map((t) => (
-                            <span key={t} className="text-xs font-medium text-white/70 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{t}</span>
-                        ))}
-                    </div>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-                        <span className="text-xs text-slate-500">{p.resultat}</span>
+                    <div className="flex flex-wrap items-center gap-3 mt-8">
+                        <div className="flex flex-wrap gap-2">
+                            {p.technologies.map((t) => (
+                                <span key={t} className="text-[11px] font-medium text-white/70 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{t}</span>
+                            ))}
+                        </div>
+                        <span className="text-slate-600">·</span>
                         <a href={p.lien} target="_blank" rel="noreferrer"
-                            className="bg-gradient-to-r from-accent to-neon text-nuit font-bold px-6 py-3 rounded-full text-sm hover:opacity-90 transition whitespace-nowrap">
+                            className="inline-flex items-center gap-2 bg-gradient-to-r from-accent to-neon text-nuit font-bold px-6 py-3 rounded-full text-sm hover:opacity-90 transition whitespace-nowrap">
                             {p.lienLabel} →
                         </a>
                     </div>

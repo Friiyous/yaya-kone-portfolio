@@ -1,4 +1,4 @@
-import { identite } from "../data/portfolio";
+import { identite, technologies } from "../data/portfolio";
 
 export default function Footer() {
     return (
@@ -12,7 +12,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <p className="text-slate-400 text-sm text-center">{identite.accroche}</p>
+                <p className="text-slate-400 text-sm text-center italic">« {technologies.citation} »</p>
 
                 <p className="text-slate-500 text-xs">© {new Date().getFullYear()} {identite.nom}</p>
             </div>

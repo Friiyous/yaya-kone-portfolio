@@ -25,12 +25,19 @@ export const contact = {
 
 export const hero = {
     badge: "Solution Builder · Digital · AI · Automation",
+    contexte:
+        "Issu du monde de la santé, je commence toujours par comprendre la réalité de terrain avant de construire.",
     titre: "Je transforme les problèmes réels en solutions digitales intelligentes.",
     sousTitre:
         "Je conçois des sites web, applications, automatisations et systèmes assistés par IA adaptés aux besoins réels des entreprises et des professionnels.",
     ctaPrincipal: "Découvrir mes projets",
     ctaSecondaire: "Parlons de votre projet",
-    flux: ["Problème", "Idée", "Technologie", "Solution"],
+    flux: [
+        { titre: "Problème", detail: "Votre réalité de terrain" },
+        { titre: "Idée", detail: "Le besoin clarifié" },
+        { titre: "Technologie", detail: "Le bon outil" },
+        { titre: "Solution", detail: "Ce qui change le travail" },
+    ],
 };
 
 export type Categorie = {
@@ -71,6 +78,7 @@ export type Projet = {
     numero: string;
     titre: string;
     categorie: string;
+    visuel: string;
     probleme: string;
     solution: string;
     points: string[];
@@ -86,6 +94,7 @@ export const projets: Projet[] = [
         numero: "01",
         titre: "Korhogo Print — Expérience digitale pour une entreprise d'impression",
         categorie: "Site web · Expérience client",
+        visuel: "/images/kp-accueil.jpg",
         probleme:
             "Une imprimerie locale avait besoin d'une présence digitale professionnelle pour présenter ses services et faciliter les demandes de commande.",
         solution:
@@ -113,20 +122,11 @@ export const videoFactory = {
     sousTitre: "Une infrastructure intelligente de production vidéo",
     badge: "Projet en développement",
     description:
-        "Conception d'une architecture logicielle permettant d'orchestrer et d'automatiser différentes étapes d'une chaîne de production vidéo assistée par intelligence artificielle.",
-    concepts: [
-        "Orchestration",
-        "Génération",
-        "Gestion des assets",
-        "B-roll",
-        "Timeline",
-        "Sous-titres",
-        "Assemblage",
-        "FFmpeg",
-        "Contrôle qualité",
-        "Traçabilité",
-        "Gestion des runs",
-        "Automatisation",
+        "Une chaîne de production vidéo pensée comme un système : chaque étape est orchestrée et automatisée, du brief à la vidéo finale.",
+    familles: [
+        { icone: "🎬", titre: "Produire", termes: ["Génération IA", "Assets", "B-roll"] },
+        { icone: "🧩", titre: "Assembler", termes: ["Timeline", "Sous-titres", "Montage FFmpeg"] },
+        { icone: "🔍", titre: "Contrôler", termes: ["QC automatique", "Traçabilité", "Historique des runs"] },
     ],
     pipeline: ["Brief", "IA", "Script", "Assets", "Production", "Montage", "QC", "Vidéo finale"],
     architecture:
