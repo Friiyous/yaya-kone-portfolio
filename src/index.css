@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0A0F1C;
+  color: #E2E8F0;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* Dégradé signature sur le texte clé */
+.texte-gradient {
+  background: linear-gradient(120deg, #6366F1, #22D3EE);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Halo lumineux discret derrière les sections clés */
+.halo {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(130px);
+  pointer-events: none;
+}
+
+/* Ligne de pipeline (VIDEO_FACTORY) */
+.pipeline-ligne {
+  background: linear-gradient(90deg, rgba(99,102,241,.6), rgba(34,211,238,.6));
+}
+
+/* Timeline de la méthode */
+.timeline-point {
+  box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.4);
+}
