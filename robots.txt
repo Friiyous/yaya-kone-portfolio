@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://friiyous.github.io/yaya-kone-portfolio/sitemap.xml
