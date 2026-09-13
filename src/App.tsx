@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import SectionCapacites from "./components/SectionCapacites";
+import SectionPotentiel from "./components/SectionPotentiel";
 import SectionProjets from "./components/SectionProjets";
 import SectionVideoFactory from "./components/SectionVideoFactory";
 import SectionFactories from "./components/SectionFactories";
@@ -18,6 +19,7 @@ export default function App() {
             <main>
                 <Hero />
                 <SectionCapacites />
+                <SectionPotentiel />
                 <SectionProjets />
                 <SectionVideoFactory />
                 <SectionFactories />

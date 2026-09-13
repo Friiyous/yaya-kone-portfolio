@@ -45,6 +45,21 @@ body {
   box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.15);
 }
 
+/* Bandeau défilant (marquee) — signature premium comme Korhogo Print */
+.marquee {
+    animation: marquee 26s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 ::selection {
   background: rgba(99, 102, 241, 0.4);
 }

@@ -33,12 +33,71 @@ export const hero = {
     ctaPrincipal: "Découvrir mes projets",
     ctaSecondaire: "Parlons de votre projet",
     flux: [
-        { titre: "Problème", detail: "Votre réalité de terrain" },
-        { titre: "Idée", detail: "Le besoin clarifié" },
-        { titre: "Technologie", detail: "Le bon outil" },
-        { titre: "Solution", detail: "Ce qui change le travail" },
+        { nom: "Problème", couleur: "#6366F1" },
+        { nom: "Idée", couleur: "#8B8CFA" },
+        { nom: "Technologie", couleur: "#22D3EE" },
+        { nom: "Solution", couleur: "#E8B84B" },
+    ],
+    marquee: [
+        "Sites web",
+        "Plateformes",
+        "Automatisation",
+        "Systèmes IA",
+        "Systèmes métier",
+        "Données & reporting",
+        "Production vidéo assistée",
+        "Video Factory",
+        "Workflows",
+        "Contrôle qualité",
     ],
 };
+
+// Ce que je construis concrètement — pour définir le potentiel sans jargon.
+export type Potentiel = {
+    icone: string;
+    titre: string;
+    livrable: string;
+    exemple: string;
+};
+
+export const potentiels: Potentiel[] = [
+    {
+        icone: "🌐",
+        titre: "Présence digitale",
+        livrable: "Des sites et plateformes qui racontent votre activité et captent des demandes 24h/24.",
+        exemple: "Vitrine, plateforme de commande, espace client, bannière de contact direct.",
+    },
+    {
+        icone: "⚙️",
+        titre: "Automatisation de tâches",
+        livrable: "Les tâches répétitives deviennent des workflows qui tournent tout seuls.",
+        exemple: "Traitement de fichiers, relances, classement, notifications, génération de documents.",
+    },
+    {
+        icone: "🤖",
+        titre: "IA intégrée",
+        livrable: "De l'intelligence artificielle branchée sur VOS données et VOS processus métier.",
+        exemple: "Génération assistée, analyse, catégorisation, assistants dédiés à votre activité.",
+    },
+    {
+        icone: "📊",
+        titre: "Données & reporting",
+        livrable: "Des tableaux de bord et rapports clairs, générés automatiquement, fiables.",
+        exemple: "Suivi d'activité, indicateurs de production, synthèses exportables.",
+    },
+    {
+        icone: "🎬",
+        titre: "Production assistée",
+        livrable: "Des chaînes de production (vidéo, documents) orchestrées et contrôlées.",
+        exemple: "Génération, assemblage, sous-titres, contrôle qualité, traçabilité.",
+    },
+    {
+        icone: "🚀",
+        titre: "Mise en production & évolution",
+        livrable: "Des solutions déployées en ligne, maintenues et améliorées dans la durée.",
+        exemple: "Hébergement, lancement, corrections, nouvelles fonctionnalités.",
+    },
+];
 
 export type Categorie = {
     icone: string;
